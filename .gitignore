@@ -28,3 +28,4 @@ application/logs/*
 */.gitkeep
 */.git
 .DS_Store
+frontend/package-lock.json

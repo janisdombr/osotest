@@ -37,5 +37,26 @@ class Api extends CI_Controller {
              ->set_content_type('application/json')
              ->set_output(json_encode($result));
     }
+    /**
+     * top_rates_to_usd
+     * method used to get currency list
+     * from external API via Currency_model
+     */
+    public function top_rates_to_usd() {
+        $topCurrencies = ['EUR', 'GBP', 'JPY', 'CNY'];
+        $rates = [];
+        foreach ($topCurrencies as $currency) {
+            $conversionKey = $currency . '_USD';
+            $rate = $this->Currency_model->get_rate($conversionKey);
+            
+            if ($rate !== NULL) {
+                $rates[$currency] = $rate;
+            }
+        }
+        $this->output
+             ->set_content_type('application/json')
+             ->set_output(json_encode($rates));
+    }
 }
+
 ?>

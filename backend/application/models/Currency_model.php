@@ -126,6 +126,36 @@ class Currency_model extends CI_Model {
             'inverseRate' => $inverseResult
         ];
     }
+    /* Get the exchange rate for a given currency pair
+    *  @param string $conversionKey
+    *  @return float|null
+    */
+    public function get_rate($conversionKey) {
+        $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
+        
+        $rate = $this->cache->get($conversionKey);
+        
+        if (!$rate) {
+            $url = $this->apiUrl . '/api/v7/convert?q=' . $conversionKey . '&compact=ultra&apiKey=' . $this->apiKey;
+            try {
+                $response = @file_get_contents($url);
+                if ($response === FALSE) {
+                    // Handle error
+                    $error = error_get_last();
+                    throw new Exception('Error getting rate: ' . $error['message']);
+                }
+                $response = json_decode($response, true);
+                $rate = $response[$conversionKey];
+                // Save the result in the cache
+                $this->cache->save($conversionKey, $rate, 86400);
+            } catch (Exception $e) {
+                log_message('error', $e->getMessage());
+                return NULL;
+            }
+        }
+
+        return $rate;
+    }
 }
 
 ?>

@@ -38,5 +38,15 @@ class CurrencyModelTest extends TestCase {
         $this->assertArrayHasKey('inverseRate', $result);
         // Additional assertions based on expected result
     }
+    public function testGetRate() {
+        // Assuming USD_EUR is a valid conversion key and there's a rate available
+        $conversionKey = 'USD_EUR';
+        $rate = $this->currencyModel->get_rate($conversionKey);
+        
+        $this->assertNotNull($rate);
+        $this->assertIsFloat($rate);
+        // If you know the expected rate, you can also assert for the specific value
+        // $this->assertEquals(0.85, $rate);
+    }
 }
 ?>

@@ -1,5 +1,5 @@
 # Use the PHP image with Nginx compatibile with CodeIgniter 3 and PHPUnit
-FROM webdevops/php-nginx:7.3
+FROM webdevops/php-nginx:7.3-alpine
 
 # Set your working directory
 WORKDIR /app

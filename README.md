@@ -19,7 +19,7 @@ cd osotest
 ## Build and run the Docker containers:
 
 ```bash
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 The application will be accessible at:

@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Install global vue-cli service
+RUN npm install -g @vue/cli-service
+
 # Install dependencies
 RUN npm install
 

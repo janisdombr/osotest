@@ -6,7 +6,7 @@
     <title>Currency Converter</title>
     <!-- Include the compiled CSS file from Vue CLI (if any) -->
     <link href="<?php echo base_url('dist/css/app.880ef79b.css'); ?>" rel="stylesheet">
-    <script defer="defer" src="<?php echo base_url('dist/js/appc.a92c4633.js'); ?>"></script>
+    <script defer="defer" src="<?php echo base_url('dist/js/app.a92c4633.js'); ?>"></script>
     <script defer="defer" src="<?php echo base_url('dist/js/chunk-vendors.a25546b2.js'); ?>"></script>
 </head>
 <body>
